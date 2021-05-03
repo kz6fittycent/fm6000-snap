@@ -14,7 +14,7 @@ compression: lzo
 
 apps:
   fm6000:
-    command: bin/fm6000
+    command: fm6000
     environment:
       LC_ALL: C.UTF-8
     plugs:
@@ -37,9 +37,3 @@ parts:
       
     stage-packages:
       - perl
-      
-  publish:
-    plugin: dump
-    source: .
-    organize:
-      ./fm6000: /bin/fm6000
