@@ -14,7 +14,7 @@ compression: lzo
 
 apps:
   fm6000:
-    command: fm6000
+    command: bin/fm6000
     environment:
       LC_ALL: C.UTF-8
     plugs:
