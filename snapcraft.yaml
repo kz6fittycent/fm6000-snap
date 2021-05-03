@@ -17,13 +17,6 @@ compression: lzo
 
 apps:
   fm6000:
-    environment:
-      LC_ALL: C.UTF-8
-    plugs:
-      - home
-      - network
-      
-  adapter: full
     command: bin/fm6000.pl
     command-chain:
       - bin/debian-multiarch-triplet-provider-launch
