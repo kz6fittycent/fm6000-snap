@@ -14,22 +14,33 @@ compression: lzo
 
 apps:
   fm6000:
-    command: fm6000
+    command: bin/fm6000.pl
     environment:
       LC_ALL: C.UTF-8
     plugs:
       - home
       - network
       
+  adapter: full
+    command: bin/fm6000.pl
+    command-chain:
+      - bin/debian-multiarch-triplet-provider-launch
+      - bin/perl-launch      
+      
 parts:
   fm6000:
     source: https://github.com/anhsirk0/fetch-master-6000
     source-type: git
-    plugin: nil
+    plugin: dump
     
-    override-build: | 
-      wget https://raw.githubusercontent.com/anhsirk0/fetch-master-6000/master/fm6000.pl -O fm6000
-      chmod +x fm6000
+  # The perl-launch launcher: Fix Perl applications in the snap runtime
+  # https://forum.snapcraft.io/t/the-perl-launch-launcher-fix-perl-applications-in-the-snap-runtime/11736
+  perl-launch:
+    source: https://github.com/Lin-Buo-Ren/perl-launch.git
+    source-tag: v1.0.0
+    plugin: dump
+    stage:
+      - bin/perl-launch    
 
     build-packages:
       - wget    
