@@ -1,0 +1,44 @@
+name: fm6000
+version: 'git'
+summary: Simple fetching tool
+description: |
+    ASCII art of Dilbert is taken from the Kakoune text editor https://github.com/mawww/kakoune
+    ASCII art of Alice, PHB is taken from Christopher Johnson's collection
+
+license: GPL-3.0
+
+base: core18
+grade: stable
+confinement: strict
+compression: lzo
+
+apps:
+  fm6000:
+    command: usr/bin/perl fm6000
+    environment:
+      LC_ALL: C.UTF-8
+    plugs:
+      - home
+      - network
+      
+parts:
+  fm6000:
+    source: https://github.com/anhsirk0/fetch-master-6000
+    source-type: git
+    plugin: nil
+    
+    override-build: | 
+      wget https://raw.githubusercontent.com/anhsirk0/fetch-master-6000/master/fm6000.pl -O fm6000
+      chmod +x fm6000
+
+    build-packages:
+      - wget      
+      
+    stage-packages:
+      - perl
+      
+  publish:
+    plugin: dump
+    source: .
+    organize:
+      ./fm6000: /bin/fm6000
