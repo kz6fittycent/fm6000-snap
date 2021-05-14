@@ -10,7 +10,7 @@ license: GPL-3.0
 assumes:
   - command-chain
 
-base: core18
+base: core20
 grade: stable
 confinement: strict
 compression: lzo
