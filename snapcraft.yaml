@@ -27,6 +27,8 @@ parts:
     source: https://github.com/anhsirk0/fetch-master-6000
     source-type: git
     plugin: dump
+    organize:
+      'fm6000.pl': bin/fm6000.pl
     
   # The perl-launch launcher: Fix Perl applications in the snap runtime
   # https://forum.snapcraft.io/t/the-perl-launch-launcher-fix-perl-applications-in-the-snap-runtime/11736
