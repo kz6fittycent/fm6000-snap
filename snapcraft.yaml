@@ -17,7 +17,7 @@ compression: lzo
 
 apps:
   fm6000:
-    command: bin/fm6000.pl
+    command: usr/bin/fm6000.pl
     command-chain:
       - bin/debian-multiarch-triplet-provider-launch
       - bin/perl-launch      
@@ -28,7 +28,7 @@ parts:
     source-type: git
     plugin: dump
     organize:
-      'fm6000.pl': bin/fm6000.pl
+      'fm6000.pl': usr/bin/
     
   # The perl-launch launcher: Fix Perl applications in the snap runtime
   # https://forum.snapcraft.io/t/the-perl-launch-launcher-fix-perl-applications-in-the-snap-runtime/11736
